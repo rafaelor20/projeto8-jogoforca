@@ -1,0 +1,36 @@
+.img-forca{
+    position: absolute;
+    top: 50px;
+    left: 30px;
+    width: 480px;
+    height: 467px;
+}
+
+.botao-iniciar{
+    position: absolute;
+    top: 80px;
+    right: 30px;
+    width: 200px;
+    height: 60px;
+}
+
+.botao-escolhe-palavra{
+    position: absolute;
+}
+
+.fonte-botao-escolhe-palavra{
+    font-family: roboto, sans-serif;
+    font-size: 20px;
+    text-align: center;
+}
+
+.palavra-do-jogo{
+    margin: 10px;
+    text-align: center;
+}
+
+.fonte-palavra-do-jogo{
+    font-family: Noto-sans, sans-serif;
+    font-size: 50px;
+    font-weight: 700;
+}

@@ -1,0 +1,47 @@
+.caixa-texto{
+    position: absolute;
+    width: 144px;
+    height: 23px;
+    display: flex;
+align-items: center;
+text-align: center;
+}
+
+.fonte-caixa-texto{
+    font-family: 'Roboto';
+font-style: normal;
+font-weight: 400;
+font-size: 20px;
+line-height: 23px;
+color: #000000;;
+}
+
+
+.caixa-chute{
+    box-sizing: border-box;
+    position: absolute;
+    width: 353px;
+    height: 40px;
+    background: #FFFFFF;
+    border: 1px solid #CCCCCC;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.25);
+    border-radius: 3px;
+}
+
+.botao-chute{
+    position: absolute;
+width: 100px;
+height: 40px;
+display: flex;
+align-items: center;
+text-align: center;
+color: #3C76A1;
+}
+
+.fonte-botao-chute{
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 19px;
+}
