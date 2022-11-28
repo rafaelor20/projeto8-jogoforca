@@ -4,12 +4,12 @@ import React, { useCallback, useState } from "react"
 export default function Jogo(props) {
     return (
         <JogoDiv>
-            <ImgForca src={props.info.forca} alt="" />
+            <ImgForca src={props.info.forca} alt="" dsata-test="game-image"/>
             <JogoLadoDireito>
-                <BotaoIniciar onClick={() => (palavraAleatoria(props))}>
+                <BotaoIniciar onClick={() => (palavraAleatoria(props))} data-test="choose-word">
                     <FonteBotaoIniciar>Escolher Palavra</FonteBotaoIniciar>
                 </BotaoIniciar>
-                <FontePalavraDisplay>{props.info.palavraPartidaTela}</FontePalavraDisplay>
+                <FontePalavraDisplay data-test="word" data-answer={props.info.palavraPartida}>{props.info.palavraPartidaTela}</FontePalavraDisplay>
             </JogoLadoDireito>
         </JogoDiv>
     )
