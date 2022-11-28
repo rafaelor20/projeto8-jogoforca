@@ -1,11 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import App from './App.js';
+import App from './AppTeste.js';
 import reportWebVitals from './reportWebVitals';
 
 import "./styles/reset.css";
 
-import palavras from "./palavras.js"
+
 
 
 
@@ -14,7 +14,7 @@ import palavras from "./palavras.js"
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <App palavras={palavras} funcSelecionaPalavra={palavraAleatoria}/>
+    <App />
   </React.StrictMode>
 );
 
@@ -23,6 +23,4 @@ root.render(
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals();
 
-function palavraAleatoria(palavras){
-  return palavras[Math.floor(Math.random() * palavras.length)];
-}
+
