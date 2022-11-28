@@ -10,8 +10,8 @@ export default function Chute(props) {
             <CaixaTexto>
                 <FonteCaixaTexto>Já sei a palavra!</FonteCaixaTexto>
             </CaixaTexto>
-            <InputChute type="text" placeholder="" />
-            <BotaoChutar onClick={()=>chutar(props, resposta)}>
+            <InputChute type="text" placeholder="" data-test="guess-input"/>
+            <BotaoChutar onClick={()=>chutar(props, resposta)} data-test="guess-button">
                 <FonteBotaoChutar>chutar</FonteBotaoChutar>
             </BotaoChutar>
         </ContainerChute>

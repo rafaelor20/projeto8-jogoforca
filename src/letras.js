@@ -14,8 +14,8 @@ export default function Letras(props) {
 
 function Letra(letra) {
     return (
-        <CaixaLetra>
-            <FonteLetra onClick={() => (temLetra(letra, this.props))}>{letra}</FonteLetra>
+        <CaixaLetra onClick={() => (temLetra(letra, this.props))} data-test="letter">
+            <FonteLetra >{letra}</FonteLetra>
         </CaixaLetra>
     )
 }
