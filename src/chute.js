@@ -1,17 +1,29 @@
 import styled from "styled-components"
+import React, { useCallback, useState } from "react"
 
-export default function Chute() {
+
+export default function Chute(props) {
+    const [resposta, setResposta] = React.useState("");
+    const [update, setUpdate] = React.useState(resposta);
     return (
         <ContainerChute>
             <CaixaTexto>
                 <FonteCaixaTexto>Já sei a palavra!</FonteCaixaTexto>
             </CaixaTexto>
             <InputChute type="text" placeholder="" />
-            <BotaoChutar>
+            <BotaoChutar onClick={()=>chutar(props, resposta)}>
                 <FonteBotaoChutar>chutar</FonteBotaoChutar>
             </BotaoChutar>
         </ContainerChute>
     )
+}
+
+function chutar(props, valor){
+    if (props.info.palavraPartida === valor){
+        alert("Voce ganhou!");
+    } else {
+        alert("Voce perdeu");
+    }
 }
 
 const ContainerChute = styled.div`

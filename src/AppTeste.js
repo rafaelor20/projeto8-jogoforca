@@ -1,3 +1,4 @@
+/*
 import React, { useCallback, useState } from "react"
 import styled from "styled-components"
 import forca0 from "./assets/forca0.png"
@@ -10,19 +11,28 @@ import forca6 from "./assets/forca6.png"
 import alfabeto from "./alfabeto.js"
 import palavras from "./palavras.js"
 
-const lstForca = [forca0, forca1, forca2, forca3, forca4, forca5, forca6]
-let palavraPartida;
-let palavraPartidaTela;
 
 
 function App() {
-  return (
-    <div className="App">
-      <Jogo />
-      <Letras />
-      <Chute/>
-    </div>
-  );
+    let palavraPartida;
+    const lstForca = [forca0, forca1, forca2, forca3, forca4, forca5, forca6]
+    const [palavraPartidaTela, setPalavraPartidaTela] = React.useState("");
+    const [forca, setForca] = React.useState(lstForca[0]);
+    let infoJogo = {
+        palavraPartida: palavraPartida,
+        palavraPartidaTela: palavraPartidaTela,
+        setPalavraPartidaTela: setPalavraPartidaTela,
+        lstForca: lstForca,
+        forca: forca,
+        setForca: setForca
+    }
+    return (
+        <div className="App">
+            <Jogo info={infoJogo}/>
+            <Letras info={infoJogo}/>
+            <Chute info={infoJogo}/>
+        </div>
+    );
 }
 
 export default App;
@@ -30,31 +40,30 @@ export default App;
 
 
 function Jogo() {
-    const [rPalavraPartidaTela, setRPalavraPartidaTela] = React.useState(palavraPartidaTela)
     return (
         <JogoDiv>
             <ImgForca src={lstForca[0]} alt="" />
             <JogoLadoDireito>
-                <BotaoIniciar onClick={()=>(palavraAleatoria(setRPalavraPartidaTela))}>
+                <BotaoIniciar onClick={() => (palavraAleatoria())}>
                     <FonteBotaoIniciar>Escolher Palavra</FonteBotaoIniciar>
                 </BotaoIniciar>
-                <FontePalavraDisplay>{rPalavraPartidaTela}</FontePalavraDisplay>
+                <FontePalavraDisplay>{}</FontePalavraDisplay>
             </JogoLadoDireito>
         </JogoDiv>
     )
 }
 
-function palavraAleatoria(setRPalavraPartidaTela){
-    if (palavraPartida === undefined){
+function palavraAleatoria(palavraPartida) {
+    if (palavraPartida === undefined) {
         palavraPartida = palavras[Math.floor(Math.random() * palavras.length)];
         console.log(palavraPartida);
-        palavraPartidaDisplay(setRPalavraPartidaTela);
-    }   
+        palavraPartidaDisplay();
+    }
 }
 
-function palavraPartidaDisplay(setRPalavraPartidaTela){
+function palavraPartidaDisplay(palavraPartida, palavraPartidaTela) {
     palavraPartidaTela = "";
-    for (let i = 0; i<palavraPartida.length; i++){
+    for (let i = 0; i < palavraPartida.length; i++) {
         palavraPartidaTela += "_";
     }
     setRPalavraPartidaTela(palavraPartidaTela);
@@ -65,18 +74,27 @@ function Letras() {
     return (
         <ContainerLetras>
             <CaixaLetras>
-                {alfabeto.map(Letra)}
+                {alfabeto.map(Letra, props.setRPalavraPartidaTela)}
             </CaixaLetras>
         </ContainerLetras>
     )
 }
 
-function Letra(letra) {
+function Letra(letra, setRPalavraPartidaTela) {
     return (
         <CaixaLetra>
-            <FonteLetra>{letra}</FonteLetra>
+            <FonteLetra onClick={() => (temLetra(letra, setRPalavraPartidaTela))}>{letra}</FonteLetra>
         </CaixaLetra>
     )
+}
+
+function temLetra(letra, setRPalavraPartidaTela) {
+    for (let i = 0; i < palavraPartida.length; i++) {
+        if (palavraPartida[i] === letra) {
+            palavraPartidaTela[i] = letra;
+        }
+        setRPalavraPartidaTela(palavraPartidaTela);
+    }
 }
 
 function Chute() {
@@ -233,3 +251,4 @@ font-size: 16px;
 line-height: 19px;
 color: #3C76A1;
 `
+*/

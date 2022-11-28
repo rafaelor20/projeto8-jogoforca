@@ -1,18 +1,35 @@
 import styled from "styled-components"
-import forca from "./assets/forca0.png"
+import React, { useCallback, useState } from "react"
 
 export default function Jogo(props) {
     return (
         <JogoDiv>
-            <ImgForca src={forca} alt="" />
+            <ImgForca src={props.info.forca} alt="" />
             <JogoLadoDireito>
-                <BotaoIniciar onClick={props.funcSelecionaPalavra}>
+                <BotaoIniciar onClick={() => (palavraAleatoria(props))}>
                     <FonteBotaoIniciar>Escolher Palavra</FonteBotaoIniciar>
                 </BotaoIniciar>
-                <p></p>
+                <FontePalavraDisplay>{props.info.palavraPartidaTela}</FontePalavraDisplay>
             </JogoLadoDireito>
         </JogoDiv>
     )
+}
+
+function palavraAleatoria(props) {
+    if (props.info.palavraPartida === undefined) {
+        props.info.palavraPartida = props.info.palavras[Math.floor(Math.random() * props.info.palavras.length)];
+        const setPalavraPartida = props.info.setPalavraPartida;
+        setPalavraPartida(props.info.palavraPartida);
+        palavraPartidaDisplay(props);
+    }
+}
+
+function palavraPartidaDisplay(props) {
+    for (let i = 0; i < props.info.palavraPartida.length; i++) {
+        props.info.palavraPartidaTela += "_";
+    }
+    const setPalavraPartidaTela = props.info.setPalavraPartidaTela;
+    setPalavraPartidaTela(props.info.palavraPartidaTela);
 }
 
 const JogoDiv = styled.div`
@@ -48,4 +65,17 @@ const FonteBotaoIniciar = styled.p`
     font-size: 20px;
     text-align: center;
     color: white;
+`
+
+const FontePalavraDisplay = styled.p`
+font-family: 'Noto Sans';
+font-style: normal;
+font-weight: 700;
+font-size: 50px;
+line-height: 68px;
+letter-spacing: 5px;
+display: flex;
+align-items: center;
+text-align: center;
+color: #000000;
 `

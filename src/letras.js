@@ -1,11 +1,12 @@
 import styled from "styled-components"
 import alfabeto from "./alfabeto.js"
+import React, { useCallback, useState } from "react"
 
-export default function Letras() {
+export default function Letras(props) {
     return (
         <ContainerLetras>
             <CaixaLetras>
-                {alfabeto.map(Letra)}
+                {alfabeto.map(Letra, {props})}
             </CaixaLetras>
         </ContainerLetras>
     )
@@ -14,19 +15,34 @@ export default function Letras() {
 function Letra(letra) {
     return (
         <CaixaLetra>
-            <FonteLetra>{letra}</FonteLetra>
+            <FonteLetra onClick={() => (temLetra(letra, this.props))}>{letra}</FonteLetra>
         </CaixaLetra>
     )
+}
+
+function temLetra(letra, props) {
+    let palavraPartidaTelaAux = "";
+    for (let i = 0; i < props.info.palavraPartida.length; i++) {
+        if (props.info.palavraPartida[i] === letra) {
+            palavraPartidaTelaAux += letra;
+        } else {
+            palavraPartidaTelaAux += props.info.palavraPartidaTela[i];
+        }
+        const setPalavraPartidaTela = props.info.setPalavraPartidaTela;
+        console.log("Aux: " + palavraPartidaTelaAux);
+        setPalavraPartidaTela(palavraPartidaTelaAux);
+    }
 }
 
 const ContainerLetras = styled.div`
 display: flex;
 justify-content: center;
 align-items: center;
-width: 80%;
+width: 100%;
 `
 
 const CaixaLetras = styled.div`
+max-width: 660px;
 display: flex;
 flex-flow: wrap;
 height: 100px;
